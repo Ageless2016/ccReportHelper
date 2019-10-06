@@ -1,0 +1,74 @@
+{
+	"scene": {
+		"desc": "场景小点检查",
+		"shtname": "小点",
+		"rules": [{
+				"case": "电信和移动VoLTE测试业务时长相差超过10%",
+				"item": "测试时长不一致",
+				"dimension": "测试完整性检查",
+				"param1": "I",
+				"param2": "J",
+				"param3": "E",
+				"param4": "F",
+				"expression": "param1-param2",
+				"logic": ">",
+				"threshold": 0.001,
+				"recommend": "移动VoLTE测试业务时长不足，影响成功次数过少，考虑补测",
+				"lightcells": "[param1,param3]",
+                "lightcolor":"(0,255,0)"
+			},
+			{
+				"case": "电信和移动数据测试业务时长相差超过10%",
+				"item": "测试时长不一致",
+				"dimension": "测试完整性检查",
+				"param1": "AK",
+				"param2": "B",
+				"param3": "BC",
+				"param4": "AA",
+				"expression": "param1 - param2",
+				"logic": ">",
+				"threshold": 0.1,
+				"recommend": "移动数据测试业务时长不足，影响尝试次数过少，考虑补测",
+				"lightcells": "[param1,param3]",
+                "lightcolor":"(0,255,0)"
+			}
+		]
+	},
+	"daily": {
+		"desc": "组每天检查",
+		"shtname": "组每天检查",
+		"rules": [{
+				"case": "电信和移动VoLTE测试业务时长相差超过10%",
+				"item": "测试时长不一致",
+				"dimension": "测试完整性检查",
+				"param1": "AK",
+				"param2": "B",
+				"param3": "BC",
+				"param4": "AA",
+				"expression": "param1-param2",
+				"logic": ">",
+				"threshold": 0.1,
+				"recommend_true": "",
+				"recommend_false": "",
+				"action_true": "light,[param1,param3],RED)",
+				"action_false": "light,[param2,param4],RED)"
+			},
+			{
+				"case": "电信和移动数据测试业务时长相差超过10%",
+				"item": "测试时长不一致",
+				"dimension": "测试完整性检查",
+				"param1": "AK",
+				"param2": "B",
+				"param3": "BC",
+				"param4": "AA",
+				"expression": "param1 - param2",
+				"logic": ">",
+				"threshold": 0.1,
+				"recommend_true": "",
+				"recommend_false": "",
+				"action_true": "light,[param1,param3],RED)",
+				"action_false": "light,[param2,param4],RED)"
+			}
+		]
+	}
+}
