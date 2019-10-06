@@ -4,7 +4,7 @@ import rule
 
 def main():
 
-    fn = r'C:\Users\CC\Desktop\telecom\CQT-多网指标汇总_V4.xlsx'
+    fn = r'C:\Users\CC\Desktop\telecom\CQT-多网指标汇总_V5.xlsx'
     wb = open_workbook(fn)
     shts = wb.sheets
     sht_point_check = shts['点检查']
@@ -13,9 +13,17 @@ def main():
     dict_scene = dict['scene']
     dict_daily = dict['daily']
     scene_rules = dict_scene['rules']
-    for rl in scene_rules:
-        scene_rule = rule.rule(rl)
+    daily_rules = dict_daily['rules']
+
+    #点检查
+    for srl in scene_rules:
+        scene_rule = rule.rule(srl)
         rule_parser(sht_point_check,scene_rule)
+
+    #每日测试组检查
+    for drl in daily_rules:
+        daily_rule = rule.rule(drl)
+        rule_parser(sht_daily_check,daily_rule)
 
 
 def rule_parser(sht,rule):
@@ -28,13 +36,16 @@ def rule_parser(sht,rule):
 
         for i in range(start_row,end_row+1):
 
-            param1 = sht.cells(i,rule.param1)
-            param2 = sht.cells(i,rule.param2)
-            param3 = sht.cells(i,rule.param3)
-            param4 = sht.cells(i,rule.param4)
-
-
-            expression = rule.expression.replace("param1",str(param1.value)).replace("param2",str(param2.value))
+            if not rule.param1 == "":
+                param1 = sht.cells(i,rule.param1)
+                expression = rule.expression.replace("param1", str(param1.value))
+            if not rule.param2 == "":
+                param2 = sht.cells(i,rule.param2)
+                expression = expression.replace("param2",str(param2.value))
+            if not rule.param3 == "":
+                param3 = sht.cells(i,rule.param3)
+            if not rule.param4 =="":
+                param4 = sht.cells(i,rule.param4)
 
             expression = expression + rule.logic + str(rule.threshold)
 
@@ -42,7 +53,7 @@ def rule_parser(sht,rule):
                 if(eval(expression)):
                     light_cells = eval(rule.lightcells)
                     lightcell(light_cells,eval(rule.lightcolor))
-                    print(rule.recommend)
+                    print(rule.case,",",rule.recommend)
             except:
                 pass
 
