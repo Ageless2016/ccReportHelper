@@ -9,8 +9,6 @@ class rule:
         self.param3 = dict['param3']
         self.param4 = dict['param4']
         self.expression = dict['expression']
-        self.logic = dict['logic']
-        self.threshold = dict['threshold']
         self.recommend = dict['recommend']
         self.lightcells = dict['lightcells']
         self.lightcolor = dict['lightcolor']

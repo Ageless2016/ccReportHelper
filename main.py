@@ -4,7 +4,7 @@ import rule
 
 def main():
 
-    fn = r'C:\Users\CC\Desktop\telecom\CQT-多网指标汇总_V5.xlsx'
+    fn = r'C:\Users\CC\Desktop\telecom\CQT-多网指标汇总_V5-样本.xlsx'
     wb = open_workbook(fn)
     shts = wb.sheets
     sht_point_check = shts['点检查']
@@ -44,13 +44,13 @@ def rule_parser(sht,rule):
                 expression = expression.replace("param2",str(param2.value))
             if not rule.param3 == "":
                 param3 = sht.cells(i,rule.param3)
+                expression = expression.replace("param3", str(param3.value))
             if not rule.param4 =="":
                 param4 = sht.cells(i,rule.param4)
-
-            expression = expression + rule.logic + str(rule.threshold)
+                expression = expression.replace("param4", str(param4.value))
 
             try:
-                if(eval(expression)):
+                if eval(expression):
                     light_cells = eval(rule.lightcells)
                     lightcell(light_cells,eval(rule.lightcolor))
                     print(rule.case,",",rule.recommend)
