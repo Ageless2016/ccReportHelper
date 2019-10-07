@@ -7,32 +7,49 @@ def main():
     fn = r'C:\Users\CC\Desktop\telecom\CQT-多网指标汇总_V5-样本.xlsx'
     wb = open_workbook(fn)
     shts = wb.sheets
-    sht_point_check = shts['点检查']
-    sht_daily_check = shts['组每天排列检查']
+    wb.app.visible = False
+    print("处理中...")
+    rule_parser(shts)
+    print("处理完成！")
+    wb.app.visible = True
+
+
+def rule_parser(shts):
+    #记录异常结果的二维数组
+    arrMsg = []
     dict = load_json()
     dict_scene = dict['scene']
     dict_daily = dict['daily']
     scene_rules = dict_scene['rules']
     daily_rules = dict_daily['rules']
+    sht_point_check = shts['点检查']
+    sht_daily_check = shts['组每天排列检查']
 
-    #点检查
-    for srl in scene_rules:
-        scene_rule = rule.rule(srl)
-        rule_parser(sht_point_check,scene_rule)
+    def exec_rule(sht,rule):
 
-    #每日测试组检查
-    for drl in daily_rules:
-        daily_rule = rule.rule(drl)
-        rule_parser(sht_daily_check,daily_rule)
-
-
-def rule_parser(sht,rule):
+        start_row = 0
+        end_row = 0
+        province_column = 0
+        city_column = 0
+        point_column = 0
+        scene_column = 0
+        testgroup_column = 0
 
 
-    def scene_check(rule):
+        if sht.name == "点检查":
+            start_row = 4
+            end_row = sht.range("E:E").last_cell.end('up').row
+            province_column = 3
+            city_column = 4
+            point_column = 5
+            scene_column = 6
 
-        start_row = 4
-        end_row = sht.range("E:E").last_cell.end('up').row
+        elif sht.name == "组每天排列检查":
+            start_row = 4
+            end_row = sht.range("H:H").last_cell.end('up').row
+            province_column = 3
+            city_column = 4
+            testgroup_column = 8
 
         for i in range(start_row,end_row+1):
 
@@ -50,18 +67,42 @@ def rule_parser(sht,rule):
                 expression = expression.replace("param4", str(param4.value))
 
             try:
-                if eval(expression):
+                exp = eval(expression)
+                if exp :
+
+                    province=""   #省
+                    city=""         #市
+                    point=""        #测试点
+                    scene=""         #场景
+                    testgroup=""      #测试组
+
+                    if province_column > 0:
+                        province = sht.cells(i,province_column).value
+
+                    if city_column > 0:
+                        city = sht.cells(i,city_column).value
+
+                    if point_column > 0:
+                        point = sht.cells(i,point_column).value
+
+                    if scene_column > 0:
+                        scene = sht.cells(i,scene_column).value
+
+                    if testgroup_column > 0:
+                        testgroup = sht.cells(i,testgroup_column).value
+
+                    dimension = rule.dimension  #检查维度
+                    item = rule.item            #检查项
+                    case = rule.case            #检查结果
+                    recommend = rule.recommend  #处理建议
+                    msg = [province,city,point,scene,testgroup,dimension,item,case,recommend]
+                    arrMsg.append(msg)
+                    print(msg)
                     light_cells = eval(rule.lightcells)
                     lightcell(light_cells,eval(rule.lightcolor))
-                    print(rule.case,",",rule.recommend)
             except:
-                pass
-
-
-
-    def daily_check(rule):
-        pass
-
+                light_cells = eval(rule.lightcells)
+                lightcell(light_cells, eval(rule.lightcolor))
 
     def lightcell(arr,color):
 
@@ -69,15 +110,19 @@ def rule_parser(sht,rule):
             rng.color = color
 
 
-    if sht.name == "点检查":
+    print("验证点检查sheet表...")
+    for srl in scene_rules:
+        scene_rule = rule.rule(srl)
+        exec_rule(sht_point_check,scene_rule)
+    print("验证每日测试组sheet表...")
+    #每日测试组检查
+    for drl in daily_rules:
+        daily_rule = rule.rule(drl)
+        exec_rule(sht_daily_check,daily_rule)
 
-        scene_check(rule)
-
-    elif sht.name == "组每天排列检查":
-
-        daily_check(rule)
-
-
+    #写sheet日志
+    print("验证完成，填写检查结果...")
+    loging(shts,arrMsg)
 
 
 def load_json():
@@ -92,41 +137,45 @@ def open_workbook(fn):
     return wb
 
 
-def loging(shts,logData):
+def loging(shts,arr_msg):
 
-    def shtExist(shtname, shts):
+    sht = None
+
+    def shtExist(shts):
 
         for sht in shts:
-            if sht.name == shtname:
+            if sht.name == 'Verifications':
                 return True
 
         return False
 
-    if not shtExist("Verifications",shts):
-        shts.add("Verifications", after=shts(shts.count))
+    def add_log_sht(shts):
+
+        shts.add("Verifications", after=shts['点检查'])
+        log_title = ['省份','城市','测试点','场景','测试组','检查维度','核查项','核查结果','处理建议']
+        i=0
+        for t in log_title:
+            i=i+1
+            shts['Verifications'].cells(1,i).value = t
+            shts['Verifications'].cells(1,i).color = (217,217,217)
+
+    def add_log_data(sht,arr_msg):
+
+        sht.range("A2:I1048576").clear
+
+        for i in range(len(arr_msg)):
+            for j in range(len(arr_msg[0])):
+                sht.cells(i+2,j+1).value = arr_msg[i][j]
+
+        sht.autofit('c')
+
+
+    if not shtExist(shts):
+        add_log_sht(shts)
 
     sht = shts("Verifications")
 
-    def create_log_title(sht):
-
-        tb_title = ['省份','城市','测试点','场景','分类','测试组','核查项','核查结果','建议']
-        i=0
-        for title in tb_title:
-            i=i+1
-            sht.cells(1,i).value = title
-
-    def log_input(sht,log_data):
-        r = sht.range("A1").current_region.last_cell.row
-        i=0
-        for log in log_data:
-            i=i+1
-            sht.cells(r+1,i).value = log
-
-
-    create_log_title(sht)
-    log_input(sht,logData)
-    sht.autofit('c')
-
+    add_log_data(sht,arr_msg)
 
 
 if __name__ == '__main__':
