@@ -2,6 +2,7 @@
 import xlwings as xw
 import json
 import rule
+import threading
 
 def start(fn):
 
@@ -13,7 +14,9 @@ def start(fn):
     shts = wb.sheets
     wb.app.visible = False
     print("Processing...")
+
     rule_parser(shts)
+
     print("done!")
     wb.app.visible = True
 
@@ -174,8 +177,6 @@ def loging(shts,arr_msg):
         for i in range(len(arr_msg)):
             for j in range(len(arr_msg[0])):
                 sht.cells(i+2,j+1).value = arr_msg[i][j]
-
-        sht.autofit('c')
 
 
     if not shtExist(shts):

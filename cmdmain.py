@@ -2,8 +2,10 @@
 from cmd import *
 import os
 import easyGo
+import threading
 
 class myCmd(Cmd):
+
     def __init__(self):
         Cmd.__init__(self)
         Cmd.intro="Easy come, easy go!"
@@ -13,12 +15,16 @@ class myCmd(Cmd):
         if not arg:
             self.help_ck()
         elif os.path.exists(arg):
-           easyGo.start(arg)
+
+            t = threading.Thread(target=easyGo.start,args=(arg,))
+            t.start()
+            #easyGo.start(arg)
+
         else:
             print("Path does not exist!")
 
     def help_ck(self):
-        print("Invalid command parameter! e.g.: ck ospath\filename.xlsx")
+        print("Invalid command parameter! e.g.: ck filepathname.xlsx")
 
 
     def preloop(self):
