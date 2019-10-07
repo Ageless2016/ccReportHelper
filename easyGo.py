@@ -1,16 +1,20 @@
+#coding=utf-8
 import xlwings as xw
 import json
 import rule
 
-def main():
+def start(fn):
 
-    fn = r'C:\Users\CC\Desktop\telecom\CQT-多网指标汇总_V5-样本.xlsx'
     wb = open_workbook(fn)
+
+    if not wb:
+        return
+
     shts = wb.sheets
     wb.app.visible = False
-    print("处理中...")
+    print("Processing...")
     rule_parser(shts)
-    print("处理完成！")
+    print("done!")
     wb.app.visible = True
 
 
@@ -110,18 +114,17 @@ def rule_parser(shts):
             rng.color = color
 
 
-    print("验证点检查sheet表...")
     for srl in scene_rules:
         scene_rule = rule.rule(srl)
         exec_rule(sht_point_check,scene_rule)
-    print("验证每日测试组sheet表...")
+
     #每日测试组检查
     for drl in daily_rules:
         daily_rule = rule.rule(drl)
         exec_rule(sht_daily_check,daily_rule)
 
     #写sheet日志
-    print("验证完成，填写检查结果...")
+    print("检查完成，填写检查结果...")
     loging(shts,arrMsg)
 
 
@@ -133,8 +136,13 @@ def load_json():
 
 def open_workbook(fn):
 
-    wb = xw.Book(fn)
-    return wb
+    file_ext = fn[-5:]
+    if file_ext == '.xlsx':
+        wb = xw.Book(fn)
+        return wb
+    else:
+        print("Invalid excel file!")
+        return
 
 
 def loging(shts,arr_msg):
@@ -176,7 +184,3 @@ def loging(shts,arr_msg):
     sht = shts("Verifications")
 
     add_log_data(sht,arr_msg)
-
-
-if __name__ == '__main__':
-    main()

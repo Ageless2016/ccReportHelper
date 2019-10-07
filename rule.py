@@ -1,3 +1,4 @@
+#coding=utf-8
 class rule:
     def __init__(self,dict):
 
