@@ -14,9 +14,7 @@ def start(fn):
     shts = wb.sheets
     wb.app.visible = False
     print("Processing...")
-
     rule_parser(shts)
-
     print("done!")
     wb.app.visible = True
 
@@ -116,7 +114,7 @@ def rule_parser(shts):
         for rng in arr:
             rng.color = color
 
-
+    #点检查
     for srl in scene_rules:
         scene_rule = rule.rule(srl)
         exec_rule(sht_point_check,scene_rule)

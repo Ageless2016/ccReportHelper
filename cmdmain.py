@@ -19,7 +19,6 @@ class myCmd(Cmd):
             t = threading.Thread(target=easyGo.start,args=(arg,))
             t.start()
             #easyGo.start(arg)
-
         else:
             print("Path does not exist!")
 
