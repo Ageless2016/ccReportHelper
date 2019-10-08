@@ -125,7 +125,7 @@ def rule_parser(shts):
         exec_rule(sht_daily_check,daily_rule)
 
     #写sheet日志
-    print("检查完成，填写检查结果...")
+    print("检查完成，正在生成报告...")
     loging(shts,arrMsg)
 
 
