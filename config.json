@@ -2734,14 +2734,14 @@
 				"lightcolor": "(255,0,0)"
 			},
 			{
-				"case": "电信2G掉话率%",
+				"case": "电信2G主被叫掉话率超过10%",
 				"item": "Volte接通率偏低",
 				"dimension": "异常事件检查",
-				"param1": "DP",
+				"param1": "CT",
 				"param2": "",
 				"param3": "",
 				"param4": "",
-				"expression": "param1<0.8",
+				"expression": "param1>0.1",
 				"recommend": "检查是否存在连续的异常事件，并每个事件进行原因分析",
 				"lightcells": "[param1]",
 				"lightcolor": "(255,0,0)"

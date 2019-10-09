@@ -6,17 +6,17 @@ import threading
 
 def start(fn):
 
-    wb = open_workbook(fn)
-    wb.app.visible = False
-    if not wb:
+    try:
+        wb = open_workbook(fn)
+        wb.app.visible = False
+        shts = wb.sheets
+        print("Processing...")
+        rule_parser(shts)
+        wb.app.visible = True
+        print("done!")
+    except:
+        print("无效的EXCEL文件格式")
         return
-
-    shts = wb.sheets
-    print("Processing...")
-    rule_parser(shts)
-    wb.app.visible = True
-    print("done!")
-
 
 
 def rule_parser(shts):
@@ -141,9 +141,6 @@ def open_workbook(fn):
     if file_ext == '.xlsx':
         wb = xw.Book(fn)
         return wb
-    else:
-        print("Invalid excel file!")
-        return
 
 
 def loging(shts,arr_msg):
