@@ -7,16 +7,16 @@ import threading
 def start(fn):
 
     wb = open_workbook(fn)
-
+    wb.app.visible = False
     if not wb:
         return
 
     shts = wb.sheets
-    wb.app.visible = False
     print("Processing...")
     rule_parser(shts)
-    print("done!")
     wb.app.visible = True
+    print("done!")
+
 
 
 def rule_parser(shts):
@@ -171,10 +171,10 @@ def loging(shts,arr_msg):
     def add_log_data(sht,arr_msg):
 
         sht.range("A2:I1048576").clear
-
-        for i in range(len(arr_msg)):
-            for j in range(len(arr_msg[0])):
-                sht.cells(i+2,j+1).value = arr_msg[i][j]
+        sht.range("A2").value = arr_msg
+        # for i in range(len(arr_msg)):
+        #     for j in range(len(arr_msg[0])):
+        #         sht.cells(i+2,j+1).value = arr_msg[i][j]
 
 
     if not shtExist(shts):
