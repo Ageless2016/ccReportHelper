@@ -1,7 +1,7 @@
 #coding=utf-8
 from cmd import *
 import os
-import easyGo
+import main
 import threading
 
 class myCmd(Cmd):
@@ -15,10 +15,10 @@ class myCmd(Cmd):
         if not arg:
             self.help_ck()
         elif os.path.exists(arg):
-
-            t = threading.Thread(target=easyGo.start,args=(arg,))
-            t.start()
-            #easyGo.start(arg)
+            file_ext = arg[-5:]
+            if file_ext != '.xlsx':
+                print("Invalid EXCEL file!")
+            main.start(arg)
         else:
             print("Path does not exist!")
 

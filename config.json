@@ -2,6 +2,12 @@
 	"scene": {
 		"desc": "场景小点检查",
 		"shtname": "点检查",
+		"start_row":4,
+		"province":"C",
+		"city":"D",
+		"spot":"E",
+		"scene":"F",
+		"team":"",
 		"rules": [{
 				"case": "电信4G主叫时长不足20分钟",
 				"item": "测试时长不一致",
@@ -1424,7 +1430,13 @@
 	},
 	"daily": {
 		"desc": "组每天检查",
-		"shtname": "组每天检查",
+		"shtname": "组每天排列检查",
+		"start_row":4,
+		"province":"C",
+		"city":"D",
+		"spot":"",
+		"scene":"",
+		"team":"H",
 		"rules": [
 			{
 				"case": "电信VoLTE主叫覆盖率-电信VoLTE被叫覆盖率>6%",
