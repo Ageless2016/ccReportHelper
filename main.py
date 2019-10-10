@@ -2,10 +2,10 @@
 import xlwings as xw
 import json
 import rule
+import threading
 
 # 定义全局数组，接收检查异常信息
 arrMsg = []
-
 def start(fn):
 
     #加载工作簿
@@ -40,8 +40,6 @@ def start(fn):
     daily_cfg['scene'] =dict_daily['scene']
     daily_cfg['team'] =dict_daily['team']
 
-
-
     #判断sheet名称是否存在
     try:
         scene_sht = shts[scene_shtname]
@@ -50,14 +48,21 @@ def start(fn):
         print("%s 或 %s Sheet表不存在！"%(scene_shtname,daily_shtname))
         return
 
-
     #设置excel程序不可见，禁止屏幕刷新提高excel操作效率
     wb.app.visible = False
     wb.app.screen_updating = False
 
-    rules_parser(daily_sht,daily_cfg,daily_rules)
-    rules_parser(scene_sht,scene_cfg,scene_rules)
+    # rules_parser(daily_sht,daily_cfg,daily_rules)
+    # rules_parser(scene_sht,scene_cfg,scene_rules)
 
+    t_scene = threading.Thread(target=rules_parser,args=(fn,scene_shtname,scene_cfg,scene_rules))
+    t_daily = threading.Thread(target=rules_parser,args=(fn,daily_shtname,daily_cfg,daily_rules))
+
+    t_scene.start()
+    t_daily.start()
+
+    t_scene.join()
+    t_daily.join()
 
     #写sheet日志
     print("检查完成，正在生成报告...")
@@ -70,8 +75,10 @@ def start(fn):
     print("done!")
 
 
-def rules_parser(sht,dict_cfg,rules):
+def rules_parser(fn,shtname,dict_cfg,rules):
 
+    wb = xw.Book(fn)
+    sht = wb.sheets[shtname]
     start_row = dict_cfg['start_row']
     end_row = sht.cells(start_row,dict_cfg['city']).end('down').row
 

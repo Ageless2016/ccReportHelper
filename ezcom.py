@@ -2,8 +2,6 @@
 from cmd import *
 import os
 import main
-import threading
-
 class myCmd(Cmd):
 
     def __init__(self):
