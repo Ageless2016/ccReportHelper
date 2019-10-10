@@ -14,17 +14,25 @@ class myCmd(Cmd):
     def do_ck(self,arg):
         if not arg:
             self.help_ck()
-        elif os.path.exists(arg):
-            file_ext = arg[-5:]
+        arg1 = str(arg).replace('"','')
+        if os.path.exists(arg1):
+            file_ext = arg1[-5:]
             if file_ext != '.xlsx':
                 print("Invalid EXCEL file!")
-            main.start(arg)
+            main.start(arg1)
         else:
             print("Path does not exist!")
 
+    def precmd(self, line):
+        #print("开始解析命令")
+        return Cmd.precmd(self, line)
+
+    def postcmd(self, stop, line):
+        #print("命令解析完成！")
+        return Cmd.postcmd(self, stop, line)
+
     def help_ck(self):
         print("Invalid command parameter! e.g.: ck filepathname.xlsx")
-
 
     def preloop(self):
         pass
@@ -49,6 +57,5 @@ class myCmd(Cmd):
 
     def default(self,line):#输入无效命令处理办法
         print("No such the command!")
-
 
 myCmd().cmdloop()
