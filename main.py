@@ -80,7 +80,8 @@ def rules_parser(fn,shtname,dict_cfg,rules):
     wb = xw.Book(fn)
     sht = wb.sheets[shtname]
     start_row = dict_cfg['start_row']
-    end_row = sht.cells(start_row,dict_cfg['city']).end('down').row
+    #end_row = sht.cells(start_row,dict_cfg['city']).end('down').row
+    end_row = sht.cells(1048576, dict_cfg['city']).end('up').row
 
     for cfg_rule in rules:
 
@@ -189,3 +190,5 @@ def loging(shts,arr_msg):
     sht = shts("Verifications")
 
     add_log_data(sht,arr_msg)
+
+    # sht.range('C2').api.Sort(Key1=sht.range('C2').api,Order1=1)
