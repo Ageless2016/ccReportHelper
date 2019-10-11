@@ -9,6 +9,16 @@ class myCmd(Cmd):
         Cmd.intro="Easy come, easy go!"
         self.prompt = "> "
 
+    def do_whatsnew(self, arg):
+        print(
+            """
+# 2019.10.11 新增查询工具版本号及更新记录命令
+# 2019.10.11 修复报表行记录为1时，末行号获取不对的BUG
+# 2019.10.10 新增支持多线程同时处理点检查和每天组检查表，提高工具检查效率
+# 2019.10.10 修复当报表路径中存在空格，操作系统会在拖入的文件路径两端自动加上双引号，导致报表路径找不到的BUG
+            """
+        )
+
     def do_ck(self,arg):
         if not arg:
             self.help_ck()
@@ -28,19 +38,10 @@ class myCmd(Cmd):
     def help_version(self):
         print("Show version info.")
 
-    def do_whatsnew(self,arg):
-        print(
-            """
-            # 2019.10.11 新增查询工具版本号及更新记录命令
-            # 2019.10.11 修复报表行记录为1时，末行号获取不对的BUG
-            # 2019.10.10 新增支持多线程同时处理点检查和每天组检查表，提高工具检查效率
-            # 2019.10.10 修复当报表路径中存在空格，操作系统会在拖入的文件路径两端自动加上双引号，导致报表路径找不到的BUG
-            """
-        )
 
     def do_chickensoup(self,arg):
         print(
-            """
+        """
             # 什么是有趣的人
               对一切未知报以好奇，对一切不同持以尊重。
               去接纳并喜欢自己，不再遮掩任何欢愉，尴尬，羞涩与失落
