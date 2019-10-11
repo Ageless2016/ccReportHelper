@@ -9,6 +9,10 @@ class myCmd(Cmd):
         Cmd.intro="Easy come, easy go!"
         self.prompt = "> "
 
+    def do_version(self,arg):
+
+        print("v1.0.4  update:20191011")
+
     def do_whatsnew(self, arg):
         print(
             """
@@ -30,9 +34,6 @@ class myCmd(Cmd):
             main.start(arg1)
         else:
             print("Path does not exist!")
-
-    def do_version(self,arg):
-        print("v1.0.4  update:20191011")
 
 
     def help_version(self):
