@@ -21,6 +21,14 @@ class myCmd(Cmd):
         else:
             print("Path does not exist!")
 
+    def do_version(self,arg):
+        print("v1.0.2  update:20191011")
+
+
+    def help_version(self):
+        print("Show version info.")
+
+
     def precmd(self, line):
         #print("开始解析命令")
         return Cmd.precmd(self, line)
