@@ -146,7 +146,7 @@
 				"param2": "FB",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -159,7 +159,7 @@
 				"param2": "EZ",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -172,7 +172,7 @@
 				"param2": "FC",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -185,7 +185,7 @@
 				"param2": "FA",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -198,7 +198,7 @@
 				"param2": "FA",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -211,7 +211,7 @@
 				"param2": "EZ",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -224,7 +224,7 @@
 				"param2": "FC",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -237,7 +237,7 @@
 				"param2": "FB",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -250,7 +250,7 @@
 				"param2": "FC",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -263,7 +263,7 @@
 				"param2": "EZ",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -276,7 +276,7 @@
 				"param2": "FA",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -289,7 +289,7 @@
 				"param2": "FB",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -302,7 +302,7 @@
 				"param2": "FD",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -315,7 +315,7 @@
 				"param2": "EZ",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -328,7 +328,7 @@
 				"param2": "FD",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -341,7 +341,7 @@
 				"param2": "FB",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -354,7 +354,7 @@
 				"param2": "FD",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -367,7 +367,7 @@
 				"param2": "FA",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -380,7 +380,7 @@
 				"param2": "FD",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对小于20分钟业务存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -393,7 +393,7 @@
 				"param2": "EQ",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -406,7 +406,7 @@
 				"param2": "EP",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -419,7 +419,7 @@
 				"param2": "ER",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -432,7 +432,7 @@
 				"param2": "EP",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -445,7 +445,7 @@
 				"param2": "ES",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -458,7 +458,7 @@
 				"param2": "EP",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -471,7 +471,7 @@
 				"param2": "ET",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -484,7 +484,7 @@
 				"param2": "EP",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -497,7 +497,7 @@
 				"param2": "ER",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -510,7 +510,7 @@
 				"param2": "EQ",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -523,7 +523,7 @@
 				"param2": "ES",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -536,7 +536,7 @@
 				"param2": "EQ",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -549,7 +549,7 @@
 				"param2": "ET",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -562,7 +562,7 @@
 				"param2": "EQ",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -575,7 +575,7 @@
 				"param2": "ES",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -588,7 +588,7 @@
 				"param2": "ER",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -601,7 +601,7 @@
 				"param2": "ET",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -614,7 +614,7 @@
 				"param2": "ER",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -627,7 +627,7 @@
 				"param2": "ET",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -640,7 +640,7 @@
 				"param2": "ES",
 				"param3": "",
 				"param4": "",
-				"expression": "param1-param2>0.1",
+				"expression": "(param1-param2)/param1>0.1",
 				"recommend": "对里程存在小于10%的，对该业务进行补测",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -807,9 +807,9 @@
 				"dimension": "服务器/速率限速检查",
 				"param1": "AG",
 				"param2": "BB",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "param1<0.5 and param2<0.5",
+				"expression": "param1<0.5 and param2<0.5 and param3==''",
 				"recommend": "1.检查双网是否使用同一个服务器 2.对比Volte业务，是否存在覆盖率差",
 				"lightcells": "[param1,param2]",
 				"lightcolor": "(255,0,0)"
@@ -820,9 +820,9 @@
 				"dimension": "服务器/速率限速检查",
 				"param1": "AI",
 				"param2": "BD",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "param1<0.5 and param2<0.5",
+				"expression": "param1<0.5 and param2<0.5 and param3==''",
 				"recommend": "1.检查双网是否使用同一个服务器 2.对比Volte业务，是否存在覆盖率差",
 				"lightcells": "[param1,param2]",
 				"lightcolor": "(255,0,0)"
@@ -2347,9 +2347,9 @@
 				"dimension": "服务器/速率限速检查",
 				"param1": "AG",
 				"param2": "BB",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "param1<0.7 and param2<0.7",
+				"expression": "param1<0.7 and param2<0.7 and param3==''",
 				"recommend": "检查双网是否使用同一个服务器",
 				"lightcells": "[param1,param2]",
 				"lightcolor": "(255,0,0)"
@@ -2360,9 +2360,9 @@
 				"dimension": "服务器/速率限速检查",
 				"param1": "AI",
 				"param2": "BD",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "param1<0.7 and param2<0.7",
+				"expression": "param1<0.7 and param2<0.7 and param3==''",
 				"recommend": "检查双网是否使用同一个服务器",
 				"lightcells": "[param1,param2]",
 				"lightcolor": "(255,0,0)"
@@ -2464,11 +2464,11 @@
 				"dimension": "数据尝试业务次数异常检查",
 				"param1": "DW",
 				"param2": "CV",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
@@ -2477,11 +2477,11 @@
 				"dimension": "数据尝试业务次数异常检查",
 				"param1": "EC",
 				"param2": "DB",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
@@ -2490,11 +2490,11 @@
 				"dimension": "数据尝试业务次数异常检查",
 				"param1": "DZ",
 				"param2": "CY",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
@@ -2503,11 +2503,11 @@
 				"dimension": "数据尝试业务次数异常检查",
 				"param1": "GC",
 				"param2": "FT",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
@@ -2516,11 +2516,11 @@
 				"dimension": "数据尝试业务次数异常检查",
 				"param1": "GF",
 				"param2": "FV",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
@@ -2529,11 +2529,11 @@
 				"dimension": "数据尝试业务次数异常检查",
 				"param1": "GI",
 				"param2": "FZ",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
@@ -2542,11 +2542,11 @@
 				"dimension": "数据尝试业务次数异常检查",
 				"param1": "DH",
 				"param2": "EI",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
@@ -2555,11 +2555,11 @@
 				"dimension": "数据尝试业务次数异常检查",
 				"param1": "EF",
 				"param2": "DE",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			
@@ -2569,11 +2569,11 @@
 				"dimension": "数据成功业务次数异常检查",
 				"param1": "DX",
 				"param2": "CW",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
@@ -2582,24 +2582,24 @@
 				"dimension": "数据成功业务次数异常检查",
 				"param1": "ED",
 				"param2": "DC",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
 				"case": "（移动成功次数-电信成功次数)/电信成功次数百分比大于20%",
 				"item": "微信消息成功次数偏低",
 				"dimension": "数据成功业务次数异常检查",
-				"param1": "EZ",
+				"param1": "EA",
 				"param2": "CZ",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
@@ -2608,11 +2608,11 @@
 				"dimension": "数据成功业务次数异常检查",
 				"param1": "GD",
 				"param2": "FU",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
@@ -2621,11 +2621,11 @@
 				"dimension": "数据成功业务次数异常检查",
 				"param1": "GG",
 				"param2": "FX",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
@@ -2634,11 +2634,11 @@
 				"dimension": "数据成功业务次数异常检查",
 				"param1": "GJ",
 				"param2": "GA",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
@@ -2647,11 +2647,11 @@
 				"dimension": "数据成功业务次数异常检查",
 				"param1": "EJ",
 				"param2": "DI",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
@@ -2660,11 +2660,11 @@
 				"dimension": "数据成功业务次数异常检查",
 				"param1": "EG",
 				"param2": "DF",
-				"param3": "",
+				"param3": "GL",
 				"param4": "",
-				"expression": "abs((param1-param2)/param2)>0.2",
+				"expression": "(param1-param2)/param2>0.2 and param3==''",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
-				"lightcells": "[param1,param2]",
+				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
 			},
 			{
