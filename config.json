@@ -809,7 +809,7 @@
 				"param2": "BB",
 				"param3": "GL",
 				"param4": "",
-				"expression": "param1<0.5 and param2<0.5 and param3==''",
+				"expression": "param3=='' and param1<0.5 and param2<0.5",
 				"recommend": "1.检查双网是否使用同一个服务器 2.对比Volte业务，是否存在覆盖率差",
 				"lightcells": "[param1,param2]",
 				"lightcolor": "(255,0,0)"
@@ -822,7 +822,7 @@
 				"param2": "BD",
 				"param3": "GL",
 				"param4": "",
-				"expression": "param1<0.5 and param2<0.5 and param3==''",
+				"expression": "param3=='' and param1<0.5 and param2<0.5",
 				"recommend": "1.检查双网是否使用同一个服务器 2.对比Volte业务，是否存在覆盖率差",
 				"lightcells": "[param1,param2]",
 				"lightcolor": "(255,0,0)"
@@ -2663,7 +2663,7 @@
 				"param2": "BB",
 				"param3": "GL",
 				"param4": "",
-				"expression": "param1<0.7 and param2<0.7 and param3==''",
+				"expression": "param3=='' and param1<0.7 and param2<0.7",
 				"recommend": "检查双网是否使用同一个服务器",
 				"lightcells": "[param1,param2]",
 				"lightcolor": "(255,0,0)"
@@ -2676,7 +2676,7 @@
 				"param2": "BD",
 				"param3": "GL",
 				"param4": "",
-				"expression": "param1<0.7 and param2<0.7 and param3==''",
+				"expression": "param3=='' and param1<0.7 and param2<0.7",
 				"recommend": "检查双网是否使用同一个服务器",
 				"lightcells": "[param1,param2]",
 				"lightcolor": "(255,0,0)"
@@ -2780,7 +2780,7 @@
 				"param2": "CV",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2793,7 +2793,7 @@
 				"param2": "DB",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2806,7 +2806,7 @@
 				"param2": "CY",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2819,7 +2819,7 @@
 				"param2": "FT",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2832,7 +2832,7 @@
 				"param2": "FV",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2845,7 +2845,7 @@
 				"param2": "FZ",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2858,7 +2858,7 @@
 				"param2": "EI",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2871,7 +2871,7 @@
 				"param2": "DE",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2885,7 +2885,7 @@
 				"param2": "CW",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2898,7 +2898,7 @@
 				"param2": "DC",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2911,7 +2911,7 @@
 				"param2": "CZ",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2924,7 +2924,7 @@
 				"param2": "FU",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2937,7 +2937,7 @@
 				"param2": "FX",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2950,7 +2950,7 @@
 				"param2": "GA",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2963,7 +2963,7 @@
 				"param2": "DI",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
@@ -2976,7 +2976,7 @@
 				"param2": "DF",
 				"param3": "GL",
 				"param4": "",
-				"expression": "(param1-param2)/param2>0.2 and param3==''",
+				"expression": "param3=='' and (param1-param2)/param2>0.2",
 				"recommend": "查看sheet2《点检查》中具体由于哪个测试点发现问题，并分析原因",
 				"lightcells": "[param2]",
 				"lightcolor": "(255,0,0)"
