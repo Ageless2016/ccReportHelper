@@ -3079,10 +3079,10 @@
 				"item": "数据业务覆盖率偏低",
 				"dimension": "终端接收性能检查",
 				"param1": "GM",
-				"param2": "AM",
+				"param2": "",
 				"param3": "",
 				"param4": "",
-				"expression": "param2=='' and param1<0.6",
+				"expression": "param1<0.6",
 				"recommend": "怀疑终端接收性能异常，建议核查点检查所有测试点是否异常。",
 				"lightcells": "[param1]",
 				"lightcolor": "(255,0,0)"
