@@ -1,7 +1,7 @@
 #coding=utf-8
 from cmd import *
 import os
-import main
+import ck
 class myCmd(Cmd):
 
     def __init__(self):
@@ -31,7 +31,7 @@ class myCmd(Cmd):
             file_ext = arg1[-5:]
             if file_ext != '.xlsx':
                 print("Invalid EXCEL file!")
-            main.start(arg1)
+            ck.start(arg1)
         else:
             print("Path does not exist!")
 
