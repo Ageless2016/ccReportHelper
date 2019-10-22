@@ -2,6 +2,7 @@
 from cmd import *
 import os
 import ck
+import mg
 class myCmd(Cmd):
 
     def __init__(self):
@@ -34,6 +35,39 @@ class myCmd(Cmd):
             ck.start(arg1)
         else:
             print("Path does not exist!")
+
+
+    def do_mg(self,arg):
+
+        if not arg:
+            self.help_mg()
+            return
+        try:
+            arg1 = arg.split()[0]
+            arg2 = arg.split()[1]
+        except:
+            print("The parameters you entered are not enough！")
+            return
+
+        arg1_0 = str(arg1).replace('"','')
+        arg2_0 = str(arg2).replace('"','')
+
+        if not os.path.exists(arg1_0):
+            print("Folder path does not exist!")
+            return
+
+        if not os.path.exists(arg2_0):
+            print("Template file path does not exist!")
+            return
+
+        file_ext = arg2_0[-5:]
+        if file_ext != '.xlsx':
+            print("Invalid EXCEL template file!")
+            return
+        else:
+            print('starting...')
+            mg.run(arg1_0,arg2_0)
+
 
 
     def help_version(self):
@@ -89,6 +123,9 @@ class myCmd(Cmd):
 
     def help_ck(self):
         print("Invalid command parameter! e.g.: ck filepathname.xlsx")
+
+    def help_mg(self):
+        print("Please input file folder path as arg1 and template.xlsx path as arg2!")
 
     def preloop(self):
         pass
