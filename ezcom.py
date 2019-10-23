@@ -65,7 +65,7 @@ class myCmd(Cmd):
             print("Invalid EXCEL template file!")
             return
         else:
-            print('starting...')
+            print('Starting...')
             mg.run(arg1_0,arg2_0)
 
 
@@ -111,7 +111,6 @@ class myCmd(Cmd):
         
             """
         )
-
 
     def precmd(self, line):
         #print("开始解析命令")
