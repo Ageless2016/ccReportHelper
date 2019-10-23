@@ -65,6 +65,8 @@ def run(folder_path,template_path):
 
     #开始合并
     processMerge(tmp_data_sht,folder_path,user_config,headers,key_headers)
+        
+    xw.App.visible = True
 
 #遍历文件夹目录，读取EXCEL文件数据，合并到sheet1
 def processMerge(tmp_data_sht,folder_path,user_config,headers,key_headers):
@@ -107,6 +109,12 @@ def processMerge(tmp_data_sht,folder_path,user_config,headers,key_headers):
                 continue
 
 
+
+
+
+
+
+
 #EXCEL 列名转列号，列号从0开始代表A列
 def colname2index(colname):
     index = -1
@@ -121,10 +129,6 @@ def colname2index(colname):
 
 
 
-
-
-
-    xw.App.visible = True
 
 
 
