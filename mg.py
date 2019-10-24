@@ -27,6 +27,9 @@ def start(folder,fn):
         header = data_sht.range(data_sht.cells(1, 1), data_sht.cells(1, data_endcolumn)).value
         config_range_list = config_sht.cells(1, 1).current_region.value
         config_list,key_list = init_config(config_range_list, header)
+        if len(key_list) == 0:
+            print("Template文件数据Sheet表第一行未找到PK_前缀的关键字标注...")
+            return
 
         # 初始化用于填充的内容字典，字典包含一个多个关键字组成的key元组，和一个内容字典============
         if datasht_endrow > datasht_startrow:
