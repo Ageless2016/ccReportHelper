@@ -1,17 +1,19 @@
 import os
+import gc
 import xlwings as xw
 from sheetconfig import *
 
-dict_fill = {}
-header = []
+
 def start(folder,fn):
     #初始化报表模板
     try:
         wb = xw.Book(fn)
         xw.App.visible = False
         shts = wb.sheets
-        data_sht = wb.sheets[0]
-        config_sht = wb.sheets['CONFIG']
+        data_sht = shts[0]
+        config_sht = shts['CONFIG']
+        header = []
+        dict_fill = {}
 
         #===============获取指标表初始行、列，结束行、列=====================================
         datasht_startrow = int(config_sht.range("G1").value)
@@ -71,7 +73,7 @@ def start(folder,fn):
                         temp_sht_max_row = temp_sht.cells(1048576,cfg.start_column).end('up').row
                         sht_content = temp_sht.used_range.value
                         print("insert row data from {}...".format(cfg.sheet_name))
-                        insert_data(cfg,sht_content,temp_sht_max_row,data_endcolumn)
+                        insert_data(cfg,sht_content,temp_sht_max_row,data_endcolumn,dict_fill)
 
             filling_list = []
             for v1 in dict_fill.values():
@@ -91,9 +93,13 @@ def start(folder,fn):
         print("Error:{}".format(e))
         xw.App.visible = True
         return
+    finally:
+        del wb,data_sht,config_sht,shts,header,dict_fill
+        gc.collect()
 
 
-def insert_data(cfg,sht_content,sht_max_row,data_endcolumn):
+
+def insert_data(cfg,sht_content,sht_max_row,data_endcolumn,dict_fill):
     for i in range(cfg.start_row,sht_max_row):
         key_list=[]
         for key_column in cfg.key_columns:
