@@ -59,7 +59,7 @@ def start(folder,fn):
             if filename[-5:] != '.xlsx':
                 continue
             filepathname = os.path.join(folder, filename)
-            print("Processing files:{}".format(filename))
+            print("Processing file:{}".format(filename))
             temp_wb = xw.Book(filepathname)
             temp_shts = temp_wb.sheets
             for cfg in config_list:
