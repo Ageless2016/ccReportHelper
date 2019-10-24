@@ -12,11 +12,12 @@ class myCmd(Cmd):
 
     def do_version(self,arg):
 
-        print("v1.0.4  update:20191011")
+        print("v2.0.0  update:20191024")
 
     def do_whatsnew(self, arg):
         print(
             """
+# 2019.10.24 新增按照多个关键字合并EXCELsheet内容
 # 2019.10.11 新增查询工具版本号及更新记录命令
 # 2019.10.11 修复报表行记录为1时，末行号获取不对的BUG
 # 2019.10.10 新增支持多线程同时处理点检查和每天组检查表，提高工具检查效率
