@@ -66,7 +66,7 @@ class myCmd(Cmd):
             return
         else:
             print('Starting...')
-            mg.run(arg1_0,arg2_0)
+            mg.start(arg1_0,arg2_0)
 
 
 
