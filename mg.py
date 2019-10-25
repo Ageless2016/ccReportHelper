@@ -3,7 +3,6 @@ import gc
 import xlwings as xw
 from sheetconfig import *
 
-
 def start(folder,fn):
     #初始化报表模板
     try:
@@ -60,14 +59,13 @@ def start(folder,fn):
                     row_data[r_d]=datasht_content[r_d]
                 dict_fill[key_t]=row_data
 
-
         filenames = os.listdir(folder)
         for filename in filenames:
             if filename[-5:] != '.xlsx':
                 continue
             filepathname = os.path.join(folder, filename)
             print("Processing file:{}".format(filename))
-            # temp_wb = xw.Book(filepathname)
+
             temp_wb = app.books.open(filepathname)
             temp_shts = temp_wb.sheets
             for cfg in config_list:
@@ -75,7 +73,7 @@ def start(folder,fn):
                     if temp_sht.name == cfg.sheet_name:
                         temp_sht_max_row = temp_sht.cells(1048576,cfg.start_column).end('up').row
                         sht_content = temp_sht.used_range.value
-                        print("insert row data from {}...".format(cfg.sheet_name))
+                        print("insert data from {}...".format(cfg.sheet_name))
                         insert_data(cfg,sht_content,temp_sht_max_row,data_endcolumn,dict_fill)
 
             filling_list = []
@@ -102,8 +100,7 @@ def start(folder,fn):
         del app,wb,data_sht,config_sht,shts,header,dict_fill
         gc.collect()
 
-
-
+#从打开的EXCEL Sheet表中，按照PK字段插入数据到dict_fill字典
 def insert_data(cfg,sht_content,sht_max_row,data_endcolumn,dict_fill):
     for i in range(cfg.start_row,sht_max_row):
         key_list=[]
@@ -116,7 +113,6 @@ def insert_data(cfg,sht_content,sht_max_row,data_endcolumn,dict_fill):
             dict_row_data = dict_fill[key_tuple]
             for k in range(len(cfg.self_columns)):
                 dict_row_data[cfg.self_columns[k]] = sht_content[i][cfg.data_columns[k]]
-
         else:
             dict_blank_data = NewBlankRow(data_endcolumn).value
             dict_fill[key_tuple] = dict_blank_data
@@ -124,8 +120,6 @@ def insert_data(cfg,sht_content,sht_max_row,data_endcolumn,dict_fill):
                 dict_blank_data[cfg.key_self_columns[m]] = sht_content[i][cfg.key_columns[m]]
             for k in range(len(cfg.self_columns)):
                 dict_blank_data[cfg.self_columns[k]]=sht_content[i][cfg.data_columns[k]]
-
-
 
 
 #初始化配置列表
@@ -156,15 +150,13 @@ def init_config(config_range_list,header):
 
 
 
-
 def colname2index(colname):
     index = -1
     num = 65
-
     for char in colname:
         index = (index + 1) * 26 + ord(char) - num
-
     return index
+
 
 def isInt(num):
     try:
