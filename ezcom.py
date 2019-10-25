@@ -17,7 +17,7 @@ class myCmd(Cmd):
     def do_whatsnew(self, arg):
         print(
             """
-# 2019.10.24 新增按照多个关键字合并EXCELsheet内容
+# 2019.10.24 新增按照多个关键字合并字段功能
 # 2019.10.11 新增查询工具版本号及更新记录命令
 # 2019.10.11 修复报表行记录为1时，末行号获取不对的BUG
 # 2019.10.10 新增支持多线程同时处理点检查和每天组检查表，提高工具检查效率
@@ -148,7 +148,8 @@ class myCmd(Cmd):
     def emptyline(self):
         print("Command can not be empty!")
 
-    def default(self,line):#输入无效命令处理办法
+    # 输入无效命令处理办法
+    def default(self,line):
         print("No such the command!")
 
 myCmd().cmdloop()
