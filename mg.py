@@ -7,8 +7,10 @@ from sheetconfig import *
 def start(folder,fn):
     #初始化报表模板
     try:
-        wb = xw.Book(fn)
-        xw.App.visible = False
+        app = xw.App(visible=False,add_book=False)
+        app.display_alerts = False
+        app.screen_updating = False
+        wb = app.books.open(fn)
         shts = wb.sheets
         data_sht = shts[0]
         config_sht = shts['CONFIG']
@@ -65,7 +67,8 @@ def start(folder,fn):
                 continue
             filepathname = os.path.join(folder, filename)
             print("Processing file:{}".format(filename))
-            temp_wb = xw.Book(filepathname)
+            # temp_wb = xw.Book(filepathname)
+            temp_wb = app.books.open(filepathname)
             temp_shts = temp_wb.sheets
             for cfg in config_list:
                 for temp_sht in temp_shts:
@@ -86,15 +89,17 @@ def start(folder,fn):
             data_sht.cells(3,1).value = filling_list
 
         print("Done!")
-        xw.App.visible = True
+        app.visible = True
+        app.display_alerts = True
+        app.screen_updating = True
 
 
     except Exception as e:
         print("Error:{}".format(e))
-        xw.App.visible = True
+        app.visible = True
         return
     finally:
-        del wb,data_sht,config_sht,shts,header,dict_fill
+        del app,wb,data_sht,config_sht,shts,header,dict_fill
         gc.collect()
 
 
