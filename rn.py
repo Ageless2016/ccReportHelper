@@ -7,7 +7,7 @@
 import os
 
 def rn(file):
-    f = open(file,encoding='gbk')
+    f = open(file,encoding='utf-8')
     data = f.readlines()
     for item in data:
         try:
