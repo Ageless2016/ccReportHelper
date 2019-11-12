@@ -4,6 +4,7 @@ import os
 import ck
 import mg
 import lf
+import rn
 class myCmd(Cmd):
 
     def __init__(self):
@@ -81,6 +82,17 @@ class myCmd(Cmd):
             return
         else:
             lf.lf(arg_c)
+
+
+    def do_rn(self,arg):
+        arg_c = str(arg).replace('"','')
+        if not os.path.exists(arg_c):
+            print("File path does not exist!")
+            return
+        elif os.path.isfile(arg_c):
+            rn.rn(arg_c)
+        else:
+            print("文件不存在或无效！")
 
 
 
