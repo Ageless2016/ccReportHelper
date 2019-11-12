@@ -3,6 +3,7 @@ from cmd import *
 import os
 import ck
 import mg
+import lf
 class myCmd(Cmd):
 
     def __init__(self):
@@ -68,6 +69,18 @@ class myCmd(Cmd):
         else:
             print('Starting...')
             mg.start(arg1_0,arg2_0)
+
+
+    def do_lf(self,arg):
+        arg_c = str(arg).replace('"','')
+        if not os.path.exists(arg_c):
+            print("Folder path does not exist!")
+            return
+        elif not os.path.isdir(arg_c):
+            print("Not a folder entered!")
+            return
+        else:
+            lf.lf(arg_c)
 
 
 
