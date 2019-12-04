@@ -7,6 +7,8 @@
 
 import xlwings as xw
 import os
+import time
+import datetime
 
 
 # 主执行函数
@@ -24,18 +26,19 @@ def run():
         print("2019 folder not found!")
         return
 
-    extract_2018_records(fdpath_2018)
-    extract_2019_records(fdpath_2019)
+    records_2018 =  extract_2018_records(fdpath_2018)
+    records_2019 = extract_2019_records(fdpath_2019)
+
+    print(records_2018)
 
 
 # 提取2018文件夹下的报表，并返回EventRecord对象列表
 def extract_2018_records(fdpath):
     record_list = []
     sht_voice_name = '普通语音2G'
-    sht_volte_name = 'VoLTE语音报表'
+    sht_volte_name = 'VoLTE指标汇总'
     sht_dropdetail_name = '电信掉话详情'
     sht_blockdetail_name = '电信未接通详情'
-
     filenames = os.listdir(fdpath)
     for filename in filenames:
         if filename[-5:] != '.xlsx':
@@ -85,7 +88,7 @@ def extract_2018_records(fdpath):
                             for j in range(5, block_sht_max_row):
                                 mofilename = block_event_content[j][2]
                                 moattempttime = block_event_content[j][3]
-                                if testpoint_name in mofilename and testscene in mofilename:
+                                if testpoint_name in str(mofilename) and testscene in str(mofilename):
                                     abnormaltype = '未接通'
                                     abnormal_event = EventRecord.AbnormalDetail(mofilename, moattempttime)
                                     blocked_detail_list.append(abnormal_event)
@@ -105,7 +108,7 @@ def extract_2018_records(fdpath):
                             for k in range(5, drop_sht_max_row):
                                 mofilename = drop_event_content[k][2]
                                 moattempttime = drop_event_content[k][3]
-                                if testpoint_name in mofilename and testscene in mofilename:
+                                if testpoint_name in str(mofilename) and testscene in str(mofilename):
                                     abnormaltype = '掉话'
                                     abnormal_event = EventRecord.AbnormalDetail(mofilename, moattempttime)
                                     dropped_detail_list.append(abnormal_event)
@@ -118,27 +121,27 @@ def extract_2018_records(fdpath):
                     servicetype = 'volte'
                     # 遍历volte语音指标表,查找掉话和未接通>0的记录
                     sht_max_row = sht.cells(1048576, 'D').end('up').row
-                    drop_sht_max_row = shts[sht_dropdetail_name].cells(1048576, 'C').end('up').row
-                    block_sht_max_row = shts[sht_blockdetail_name].cells(1048576, 'C').end('up').row
-                    sht_content = sht.used_range.value
-                    drop_event_content = shts[sht_dropdetail_name].used_range.value
-                    block_event_content = shts[sht_blockdetail_name].range(shts[sht_blockdetail_name].cells(1,1),shts[sht_blockdetail_name].cells(block_sht_max_row,25)).value
-                    for i in range(5, sht_max_row):
-                        blockedcount = sht_content[i][32]
-                        droppedcount = sht_content[i][41]
+                    drop_sht_max_row = shts[sht_dropdetail_name].cells(1048576, 'F').end('up').row
+                    block_sht_max_row = shts[sht_blockdetail_name].cells(1048576, 'F').end('up').row
+                    sht_content = sht.range(sht.cells(1,1),sht.cells(sht_max_row,103)).value
+                    drop_event_content = shts[sht_dropdetail_name].range(shts[sht_dropdetail_name].cells(1,1),shts[sht_dropdetail_name].cells(drop_sht_max_row,12)).value
+                    block_event_content = shts[sht_blockdetail_name].range(shts[sht_blockdetail_name].cells(1,1),shts[sht_blockdetail_name].cells(block_sht_max_row,12)).value
+                    for i in range(4, sht_max_row):
+                        blockedcount = sht_content[i][86]
+                        droppedcount = sht_content[i][102]
 
                         # 查找电信未接通详情表找到主叫文件名、主叫起呼时间
-                        if blockedcount > 0:
+                        if  not blockedcount is None and blockedcount > 0:
                             city = sht_content[i][2]
                             testpoint_name = sht_content[i][3]
                             testscene = sht_content[i][4]
-                            totalcount = sht_content[i][19]
-                            coveredcount = sht_content[i][18]
+                            totalcount = sht_content[i][11]
+                            coveredcount = sht_content[i][12]
                             blocked_detail_list = []
                             for j in range(5, block_sht_max_row):
-                                mofilename = block_event_content[j][2]
-                                moattempttime = block_event_content[j][3]
-                                if testpoint_name in mofilename and testscene in mofilename:
+                                mofilename = block_event_content[j][5]
+                                moattempttime = block_event_content[j][6]
+                                if testpoint_name in str(mofilename) and testscene in str(mofilename):
                                     abnormaltype = '未接通'
                                     abnormal_event = EventRecord.AbnormalDetail(mofilename, moattempttime)
                                     blocked_detail_list.append(abnormal_event)
@@ -148,17 +151,17 @@ def extract_2018_records(fdpath):
                             record_list.append(event_record)
 
                         # 查找电信掉话详情表找到主叫文件名、主叫起呼时间
-                        if droppedcount > 0:
+                        if  not droppedcount is None and  droppedcount > 0:
                             city = sht_content[i][2]
                             testpoint_name = sht_content[i][3]
                             testscene = sht_content[i][4]
-                            totalcount = sht_content[i][19]
-                            coveredcount = sht_content[i][18]
+                            totalcount = sht_content[i][11]
+                            coveredcount = sht_content[i][12]
                             dropped_detail_list = []
                             for k in range(5, drop_sht_max_row):
-                                mofilename = drop_event_content[k][2]
-                                moattempttime = drop_event_content[k][3]
-                                if testpoint_name in mofilename and testscene in mofilename:
+                                mofilename = drop_event_content[k][5]
+                                moattempttime = drop_event_content[k][6]
+                                if testpoint_name in str(mofilename) and testscene in str(mofilename):
                                     abnormaltype = '掉话'
                                     abnormal_event = EventRecord.AbnormalDetail(mofilename, moattempttime)
                                     dropped_detail_list.append(abnormal_event)
@@ -166,16 +169,11 @@ def extract_2018_records(fdpath):
                             event_record = EventRecord(testpoint_name, testscene, servicetype, totalcount, coveredcount,
                                                        abnormaltype, dropped_detail_list)
                             record_list.append(event_record)
+
             if servicetype == '': return
-
-
-
-
-
         except Exception as e:
             raise
             print(e)
-
     return record_list
 
 
@@ -208,8 +206,18 @@ class EventRecord():
             self.mocallattempttime = mocallattempttime
 
         def __repr__(self):
-            outstr = "MoCallAttemptTime:{}".format(self.mocallattempttime)
+            time_stamp = (self.mocallattempttime - 25569)
+            outstr = floattimetostr(self.mocallattempttime)
             return outstr
+
+
+
+def floattimetostr(floattime):
+    stamp =round((floattime-25569)*1000000*86400)
+    dateArray = datetime.datetime.utcfromtimestamp(int(str(stamp)[0:10]))
+    microSec = round(int(str(stamp)[-6:])/1000)
+    custom_time_format = str(dateArray.strftime("%Y-%m-%d %H:%M:%S")) + "." + str(microSec)
+    return custom_time_format
 
 
 if __name__ == '__main__':
