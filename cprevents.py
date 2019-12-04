@@ -29,29 +29,21 @@ def run():
     records_2018 =  extract_2018_records(fdpath_2018)
     records_2019 = extract_2019_records(fdpath_2019)
 
-    # print(records_2018)
     set_records_2018 = set(records_2018)
     set_records_2019 = set(records_2019)
 
-    records_2018_list_size = len(records_2018)
-    records_2018_set_size = len(set_records_2018)
+    obj_new2018 = list(set_records_2018 - set_records_2019)
+    obj_new2019 = list(set_records_2019 - set_records_2018)
+    lst_new2018 = []
+    lst_new2019 = []
+    for obj_event in obj_new2018:
+        lst_new2018.append(obj_event.content)
 
-    records_2019_list_size = len(records_2019)
-    records_2019_set_size = len(set_records_2019)
+    for obj_event in obj_new2019:
+        lst_new2019.append(obj_event.content)
 
-    print('records 2018' + '='*100)
-    print(records_2018_list_size,'vs',records_2018_set_size)
+    export_result(lst_new2018,lst_new2019)
 
-    print('records 2019' + '='*100)
-    print(records_2019_list_size,'vs',records_2019_set_size)
-
-    print('records 2019 - records 2018' + '='*100)
-    set_records_19new = set_records_2018 - set_records_2019
-    print(len(set_records_19new))
-    print(list(set_records_19new))
-
-
-    print('done!')
 
 
 # 提取2018文件夹下的报表，并返回EventRecord对象列表
@@ -173,7 +165,7 @@ def extract_2018_records(fdpath):
 
             if servicetype == '': return
         except Exception as e:
-            raise
+            # raise
             print(e)
         finally:
             wb.close()
@@ -296,9 +288,8 @@ def extract_2019_records(fdpath):
                                                        abnormaltype,moattempttime,mofilename)
                                     record_list.append(event_record)
 
-
         except Exception as e:
-            raise
+            # raise
             print(e)
         finally:
             wb.close()
@@ -307,23 +298,45 @@ def extract_2019_records(fdpath):
     return record_list
 
 # 进行详情记录对比
-def compare_records(aReacords,bRecords):
-    pass
+def export_result(newevents_2018,newevents_2019):
+    fp,fn = os.path.split(os.path.abspath(__file__))
+    timesn = int(time.time())
+    result_fn = 'results_' + str(timesn) + '.xlsx'
+    result_full_path = os.path.join(fp,result_fn)
+    app = xw.App(visible=False,add_book=False)
+    app.screen_updating = False
+    app.display_alerts = False
+    new_wb = app.books.add()
+    sht_new_2018 =  new_wb.sheets.add('2018新增')
+    sht_new_2019 = new_wb.sheets.add('2019新增')
+    new_wb.sheets('sheet1').delete()
+
+    xlheader = ['城市','测试点','场景','业务类型','采样点分母','采样点分子','异常类型','起呼时间','文件名']
+    sht_new_2018.cells(1,1).value = xlheader
+    sht_new_2018.cells(2, 1).value = newevents_2018
+    sht_new_2019.cells(1,1).value = xlheader
+    sht_new_2019.cells(2,1).value = newevents_2019
+
+    app.screen_updating = True
+    app.display_alerts = True
+    new_wb.save(result_full_path)
+    app.quit()
+    print('Success! 文件路径: {}'.format(result_full_path))
 
 
 class EventRecord():
     def __init__(self, city,testpoint_name, testscene, servicetype, totalcount, coveredcount, abnormaltype,
                  mocallattempttime,mofilename):
         self.city = city #城市
-        self.testpoint_name = testpoint_name  # 测试点名称
-        self.testscene = testscene  # 测试场景类型（深度，浅度）
+        self.testpoint_name = testpoint_name  # 测试点
+        self.testscene = testscene  # 场景（深度，浅度）
         self.servicetype = servicetype  # 业务类型（voice,volte）
         self.totalcount = totalcount  # 采样点分母
         self.coveredcount = coveredcount  # 采样点分子
         self.abnormaltype = abnormaltype  # 异常类型（掉话、未接通）
         self.mocallattempttime = mocallattempttime #主叫起呼时间
         self.mofilename = mofilename #主叫文件名
-        #self.abnormaldetaillist = abnormaldetaillist  # 异常详情列表
+        self.content = [self.city,self.testpoint_name,self.testscene,self.servicetype,self.totalcount,self.coveredcount,self.abnormaltype,self.mocallattempttime,self.mofilename]
 
     def __eq__(self, other):
         return self.city+self.testpoint_name+self.testscene+self.servicetype+self.abnormaltype + str(round(self.mocallattempttime,6)) == \
@@ -338,20 +351,6 @@ class EventRecord():
             self.city,self.testpoint_name,self.testscene,self.servicetype,self.totalcount,self.coveredcount,self.abnormaltype,fmt_mocallattempttime,self.mofilename)
         return outstr
 
-    # class AbnormalDetail():
-    #     def __init__(self, mofilename, mocallattempttime):
-    #         self.mofilename = mofilename
-    #         self.mocallattempttime = mocallattempttime
-    #
-    #     def __eq__(self, other):
-    #         return round(self.mocallattempttime,6) == round(other.mocallattempttime,6)
-    #
-    #     def __hash__(self):
-    #         return hash(round(self.mocallattempttime,6))
-    #
-    #     def __repr__(self):
-    #         outstr = floattimetostr(self.mocallattempttime)
-    #         return outstr
 
 
 def floattimetostr(floattime):

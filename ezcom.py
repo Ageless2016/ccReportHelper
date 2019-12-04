@@ -5,6 +5,7 @@ import ck
 import mg
 import lf
 import rn
+import cprevents
 class myCmd(Cmd):
 
     def __init__(self):
@@ -94,7 +95,8 @@ class myCmd(Cmd):
         else:
             print("文件不存在或无效！")
 
-
+    def do_kakaka(self, arg):
+            cprevents.run()
 
     def help_version(self):
         print("Show version info.")
