@@ -497,9 +497,13 @@ class EventRecord():
         self.servicetype = servicetype  # 业务类型（voice,volte）
         self.abnormaltype = abnormaltype  # 异常类型（掉话、未接通）
         self.mocallattempttime = mocallattempttime #主叫起呼时间
-        self.voltedetail = extenddetail
-        self.content = [self.city,self.testpoint_name,self.testscene,self.servicetype,self.abnormaltype,self.mocallattempttime]
-        self.content.extend(self.voltedetail)
+        self.extenddetail = extenddetail
+
+    @property
+    def content(self):
+        val = [self.city,self.testpoint_name,self.testscene,self.servicetype,self.abnormaltype,self.mocallattempttime]
+        val.extend(self.extenddetail)
+        return val
 
     def __eq__(self, other):
         return self.city+self.testpoint_name+self.testscene+self.servicetype+self.abnormaltype + str(round(self.mocallattempttime,6)) == \
@@ -518,8 +522,8 @@ class EventRecord():
 def floattimetostr(floattime):
     stamp =round((floattime-25569)*1000000*86400)
     dateArray = datetime.datetime.utcfromtimestamp(int(str(stamp)[0:10]))
-    microSec = round(int(str(stamp)[-6:])/1000)
-    custom_time_format = str(dateArray.strftime("%Y-%m-%d %H:%M:%S")) + "." + str(microSec)
+    milliSec = round(int(str(stamp)[-6:])/1000)
+    custom_time_format = str(dateArray.strftime("%Y-%m-%d %H:%M:%S")) + "." + str(milliSec)
     return custom_time_format
 
 
