@@ -2,6 +2,10 @@
 from cmd import *
 import os
 import ck
+import mg
+import lf
+import rn
+import cprevents
 class myCmd(Cmd):
 
     def __init__(self):
@@ -11,11 +15,12 @@ class myCmd(Cmd):
 
     def do_version(self,arg):
 
-        print("v1.0.4  update:20191011")
+        print("v2.0.0  update:20191024")
 
     def do_whatsnew(self, arg):
         print(
             """
+# 2019.10.24 新增按照多个关键字合并字段功能
 # 2019.10.11 新增查询工具版本号及更新记录命令
 # 2019.10.11 修复报表行记录为1时，末行号获取不对的BUG
 # 2019.10.10 新增支持多线程同时处理点检查和每天组检查表，提高工具检查效率
@@ -35,6 +40,63 @@ class myCmd(Cmd):
         else:
             print("Path does not exist!")
 
+
+    def do_mg(self,arg):
+
+        if not arg:
+            self.help_mg()
+            return
+        try:
+            arg1 = arg.split()[0]
+            arg2 = arg.split()[1]
+        except:
+            print("The parameters you entered are not enough！")
+            return
+
+        arg1_0 = str(arg1).replace('"','')
+        arg2_0 = str(arg2).replace('"','')
+
+        if not os.path.exists(arg1_0):
+            print("Folder path does not exist!")
+            return
+
+        if not os.path.exists(arg2_0):
+            print("Template file path does not exist!")
+            return
+
+        file_ext = arg2_0[-5:]
+        if file_ext != '.xlsx':
+            print("Invalid EXCEL template file!")
+            return
+        else:
+            print('Starting...')
+            mg.start(arg1_0,arg2_0)
+
+
+    def do_lf(self,arg):
+        arg_c = str(arg).replace('"','')
+        if not os.path.exists(arg_c):
+            print("Folder path does not exist!")
+            return
+        elif not os.path.isdir(arg_c):
+            print("Not a folder entered!")
+            return
+        else:
+            lf.lf(arg_c)
+
+
+    def do_rn(self,arg):
+        arg_c = str(arg).replace('"','')
+        if not os.path.exists(arg_c):
+            print("File path does not exist!")
+            return
+        elif os.path.isfile(arg_c):
+            rn.rn(arg_c)
+        else:
+            print("文件不存在或无效！")
+
+    def do_kakaka(self, arg):
+            cprevents.run()
 
     def help_version(self):
         print("Show version info.")
@@ -78,7 +140,6 @@ class myCmd(Cmd):
             """
         )
 
-
     def precmd(self, line):
         #print("开始解析命令")
         return Cmd.precmd(self, line)
@@ -89,6 +150,9 @@ class myCmd(Cmd):
 
     def help_ck(self):
         print("Invalid command parameter! e.g.: ck filepathname.xlsx")
+
+    def help_mg(self):
+        print("Please input file folder path as arg1 and template.xlsx path as arg2!")
 
     def preloop(self):
         pass
@@ -111,7 +175,8 @@ class myCmd(Cmd):
     def emptyline(self):
         print("Command can not be empty!")
 
-    def default(self,line):#输入无效命令处理办法
+    # 输入无效命令处理办法
+    def default(self,line):
         print("No such the command!")
 
 myCmd().cmdloop()
